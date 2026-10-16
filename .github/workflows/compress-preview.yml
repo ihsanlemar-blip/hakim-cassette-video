@@ -11,6 +11,11 @@ jobs:
       contents: write
 
     steps:
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Download Master 1080p Video
         env:
           GH_TOKEN: ${{ github.token }}

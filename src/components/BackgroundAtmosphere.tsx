@@ -78,48 +78,20 @@ export const BackgroundAtmosphere: React.FC<BackgroundProps> = ({
         />
       </div>
 
-      {/* ========================================================= */}
-      {/* 2. Soft Midnight Vignette & Ambient Balance               */}
-      {/* Softly preserves barely recognizable lake/mountains/light */}
-      {/* ========================================================= */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse at 50% 50%, rgba(4, 7, 14, 0.12) 0%, rgba(3, 5, 10, 0.35) 60%, rgba(2, 3, 6, 0.75) 100%)',
-        }}
-      />
-
-      {/* ========================================================= */}
-      {/* 3. Warm Amber Singer Light & Center Glow                  */}
-      {/* ========================================================= */}
+      {/* Ambient Singer Underglow (subtle warm backlight) */}
       <div
         style={{
           position: 'absolute',
           top: '15%',
           left: '10%',
-          width: '50%',
+          width: '45%',
           height: '70%',
           background:
-            'radial-gradient(ellipse at 45% 45%, rgba(213, 154, 85, 0.14) 0%, rgba(138, 101, 26, 0.05) 45%, transparent 75%)',
-          filter: 'blur(60px)',
+            'radial-gradient(ellipse at 45% 45%, rgba(213, 154, 85, 0.12) 0%, rgba(138, 101, 26, 0.03) 45%, transparent 75%)',
+          filter: 'blur(50px)',
           opacity: pulseIntensity,
           transform: `scale(${1.0 + bass * 0.03})`,
           transition: 'transform 0.1s ease-out',
-        }}
-      />
-
-      {/* Subtle Right-Side Gradient to ensure lyrics & spectrum readability */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '55%',
-          background:
-            'linear-gradient(to right, transparent 0%, rgba(3, 5, 10, 0.35) 40%, rgba(2, 3, 7, 0.65) 100%)',
         }}
       />
 
@@ -176,14 +148,6 @@ export const BackgroundAtmosphere: React.FC<BackgroundProps> = ({
         );
       })}
 
-      {/* Master Cinematic Border Softening */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.85)',
-        }}
-      />
     </div>
   );
 };

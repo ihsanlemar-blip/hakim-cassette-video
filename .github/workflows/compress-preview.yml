@@ -1,0 +1,52 @@
+name: Generate Lightweight Mobile Video
+
+on:
+  workflow_dispatch:
+
+jobs:
+  compress:
+    name: Transcode Master Video to Low-Data MP4
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download Master 1080p Video
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v2.0.0-final-master --repo ${{ github.repository }} -p "*.mp4"
+          ls -lh *.mp4
+
+      - name: Transcode to Mobile Fast-Start Stream
+        run: |
+          INPUT_FILE="HakimJan_Faryadi_GhamjaneStargi_1080p.mp4"
+          
+          # 360p (Super lightweight ~15MB) with faststart so browsers stream immediately
+          ffmpeg -i "${INPUT_FILE}" \
+            -vf "scale=-2:360" \
+            -c:v libx264 -crf 28 -preset fast \
+            -c:a aac -b:a 96k \
+            -movflags +faststart \
+            HakimJan_Faryadi_GhamjaneStargi_360p_preview.mp4
+
+          # 480p (Clean balanced ~25MB)
+          ffmpeg -i "${INPUT_FILE}" \
+            -vf "scale=-2:480" \
+            -c:v libx264 -crf 26 -preset fast \
+            -c:a aac -b:a 128k \
+            -movflags +faststart \
+            HakimJan_Faryadi_GhamjaneStargi_480p_preview.mp4
+
+          echo "=== Transcoded Files ==="
+          ls -lh *.mp4
+
+      - name: Upload Streamable Versions to Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v2.0.0-final-master \
+            HakimJan_Faryadi_GhamjaneStargi_360p_preview.mp4 \
+            HakimJan_Faryadi_GhamjaneStargi_480p_preview.mp4 \
+            --repo ${{ github.repository }} \
+            --clobber

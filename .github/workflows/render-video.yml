@@ -28,7 +28,9 @@ jobs:
   render:
     name: Full HD Video Render (1080p 30 FPS)
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 240
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -116,6 +118,28 @@ jobs:
           name: hakim-jan-master-video
           path: out/${{ github.event.inputs.output_filename }}
           retention-days: 90
+
+      - name: Publish GitHub Release with Master Video
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          OUTPUT_PATH="out/${{ github.event.inputs.output_filename }}"
+          RELEASE_TAG="v2.0.0-final-master"
+          
+          # Delete existing tag/release if re-running
+          gh release delete "${RELEASE_TAG}" --yes || true
+          git tag -d "${RELEASE_TAG}" 2>/dev/null || true
+          
+          gh release create "${RELEASE_TAG}" "${OUTPUT_PATH}" \
+            --title "Hakim Jan Faryadi — غمجنې سترګې (1080p Master Video)" \
+            --notes "### 🎬 Full 1080p Master Video (Ready for YouTube & Broadcast)
+          - **Artist:** حکیم جان فریادي (Hakim Jan Faryadi)
+          - **Song:** غمجنې سترګې سندره (Ghamjane Stargi)
+          - **Resolution:** 1920 × 1080 @ 30 FPS
+          - **Duration:** 6:35 (~395.74s, 11,873 frames)
+          - **Encoding:** H.264 High Profile / AAC Audio (CRF ${{ github.event.inputs.crf }})"
 
       - name: Generate Render Summary
         if: always()

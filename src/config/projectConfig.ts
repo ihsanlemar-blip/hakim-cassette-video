@@ -15,7 +15,9 @@ export interface ProjectConfig {
     audioSrc: string;
     portraitSrc: string;
     subtitlesSrc: string;
-    cassetteTextureSrc?: string;
+    backgroundSrc: string;
+    cassettePngSrc: string;
+    customFontSrc: string;
   };
   dimensions: {
     width: number;
@@ -26,19 +28,19 @@ export interface ProjectConfig {
   };
   layout: {
     singer: {
-      leftPercent: number; // ~4% from left
+      leftPercent: number; // ~3.5% from left
       bottomPx: number; // 0px
-      widthPx: number; // ~920px (~48% of screen)
+      widthPx: number; // ~920px (~48-52% of visual composition)
       heightPx: number; // ~1040px (~96% of screen)
       glowIntensity: number;
       breathingScale: number;
       floatingAmplitude: number;
     };
     cassette: {
-      leftPx: number; // ~540px (near singer transition)
+      leftPx: number; // ~560px (beside singer)
       bottomPx: number; // ~85px
-      widthPx: number; // ~360px (~18.75% of screen width)
-      heightPx: number; // ~215px
+      widthPx: number; // ~350px (~18.2% of screen width)
+      heightPx: number; // ~214px
       yawDegrees: number;
       pitchDegrees: number;
       rollDegrees: number;
@@ -49,24 +51,20 @@ export interface ProjectConfig {
       rightPx: number; // ~70px
       bottomPx: number; // ~90px
       widthPx: number; // ~860px
-      heightPx: number; // ~170px
+      heightPx: number; // ~165px
       barCount: number;
       sensitivity: number;
     };
     lyrics: {
       rightPx: number; // ~70px
-      bottomPx: number; // ~290px
+      bottomPx: number; // ~285px
       widthPx: number; // ~860px
       fontSizePx: number;
       fontFamily: string;
     };
-    branding: {
-      rightPx: number; // ~70px
-      topPx: number; // ~60px
-    };
     camera: {
       enabled: boolean;
-      maxShakePx: number; // 3.5px
+      maxShakePx: number; // 3.2px
       zoomBreathing: number; // 1.006
       rotationShakeDeg: number; // 0.12deg
       canvasOversize: number; // 1.05 (105% to avoid black borders)
@@ -84,8 +82,6 @@ export interface ProjectConfig {
       textLight: string;
       textMuted: string;
       accentTeal: string;
-      cassetteBody: string;
-      cassetteBevel: string;
     };
   };
 }
@@ -105,6 +101,9 @@ export const PROJECT_CONFIG: ProjectConfig = {
     audioSrc: staticFile('ghamjani_stargi.mp3'),
     portraitSrc: staticFile('hakim_portrait.png'),
     subtitlesSrc: staticFile('Extracted_CapCut_Pashto_Subtitles.srt'),
+    backgroundSrc: staticFile('Hakim_Jan_Blackish_Blurred_Background_1920x1080.png'),
+    cassettePngSrc: staticFile('Hakim_Jan_Cassette_English_Only_Transparent.png'),
+    customFontSrc: staticFile('fonts/Bahij Nazanin-Regular.ttf'),
   },
   dimensions: {
     width: 1920,
@@ -124,12 +123,12 @@ export const PROJECT_CONFIG: ProjectConfig = {
       floatingAmplitude: 6,
     },
     cassette: {
-      leftPx: 560, // Floating tastefully near singer
-      bottomPx: 90,
-      widthPx: 360, // Exactly 18.75% of 1920 frame width
-      heightPx: 216,
-      yawDegrees: 7.5,
-      pitchDegrees: 2.8,
+      leftPx: 560, // Beside the singer
+      bottomPx: 85,
+      widthPx: 350, // 18.2% of 1920 frame width
+      heightPx: 214,
+      yawDegrees: 6.5,
+      pitchDegrees: 2.5,
       rollDegrees: 1.2,
       swayAmplitude: 4,
       bassPulseScale: 1.025,
@@ -146,12 +145,8 @@ export const PROJECT_CONFIG: ProjectConfig = {
       rightPx: 70,
       bottomPx: 285,
       widthPx: 860,
-      fontSizePx: 46,
-      fontFamily: "'Noto Naskh Arabic Local', 'Noto Naskh Arabic', sans-serif",
-    },
-    branding: {
-      rightPx: 70,
-      topPx: 60,
+      fontSizePx: 48,
+      fontFamily: "'Bahij Nazanin', 'Noto Naskh Arabic Local', 'Noto Naskh Arabic', sans-serif",
     },
     camera: {
       enabled: true,
@@ -163,8 +158,8 @@ export const PROJECT_CONFIG: ProjectConfig = {
   },
   theme: {
     colors: {
-      bgMidnight: '#081323',
-      bgNavy: '#101D32',
+      bgMidnight: '#04060b',
+      bgNavy: '#080d18',
       bgCharcoal: '#0a0d14',
       goldPrimary: '#d8a93e',
       goldLight: '#f6d97c',
@@ -173,8 +168,6 @@ export const PROJECT_CONFIG: ProjectConfig = {
       textLight: '#fbf8f0',
       textMuted: '#b0a99a',
       accentTeal: '#152438',
-      cassetteBody: '#121418',
-      cassetteBevel: '#262930',
     },
   },
 };

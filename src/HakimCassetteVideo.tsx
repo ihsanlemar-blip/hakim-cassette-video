@@ -3,7 +3,6 @@ import { useCurrentFrame, useVideoConfig, Audio, staticFile } from 'remotion';
 import { BackgroundAtmosphere } from './components/BackgroundAtmosphere';
 import { SingerHero } from './components/SingerHero';
 import { SmallCassette } from './components/SmallCassette';
-import { SongBranding } from './components/SongBranding';
 import { AudioSpectrum } from './components/AudioSpectrum';
 import { PashtoLyrics } from './components/PashtoLyrics';
 import { CameraMotionController } from './components/CameraMotionController';
@@ -17,6 +16,7 @@ export const HakimCassetteVideo: React.FC = () => {
   const { fps, durationInFrames } = useVideoConfig();
   const { media } = PROJECT_CONFIG;
 
+  const fontBahijNazanin = staticFile('fonts/Bahij Nazanin-Regular.ttf');
   const fontRegular = staticFile('fonts/NotoNaskhArabic-Regular.ttf');
   const fontMedium = staticFile('fonts/NotoNaskhArabic-Medium.ttf');
   const fontBold = staticFile('fonts/NotoNaskhArabic-Bold.ttf');
@@ -33,11 +33,17 @@ export const HakimCassetteVideo: React.FC = () => {
         height: 1080,
         backgroundColor: '#04060b',
         overflow: 'hidden',
-        fontFamily: "'Noto Naskh Arabic Local', 'Noto Naskh Arabic', sans-serif",
+        fontFamily: "'Bahij Nazanin', 'Noto Naskh Arabic Local', 'Noto Naskh Arabic', sans-serif",
       }}
     >
-      {/* 1. Bundled Local Arabic/Pashto Font Provisioning for Headless Chromium */}
+      {/* 1. Bundled Custom Pashto Font (Bahij Nazanin) + Fallback Font Provisioning */}
       <style>{`
+        @font-face {
+          font-family: 'Bahij Nazanin';
+          src: url('${fontBahijNazanin}') format('truetype');
+          font-weight: 400;
+          font-style: normal;
+        }
         @font-face {
           font-family: 'Noto Naskh Arabic Local';
           src: url('${fontRegular}') format('truetype');
@@ -68,13 +74,13 @@ export const HakimCassetteVideo: React.FC = () => {
         bass={bass}
         pulse={pulse}
       >
-        {/* Layer A-G: Multi-layered Cinematic Atmosphere, Stars, Dust & Light Rays */}
+        {/* Layer A-G: Blackish Atmospheric Blurred Backdrop & Subtle Night Sky Dust */}
         <BackgroundAtmosphere frame={frame} energy={energy} bass={bass} />
 
-        {/* PRIMARY VISUAL FOCUS: Singer Hero Portrait with Multi-layer Golden Back Glow (Left/Center-Left) */}
+        {/* PRIMARY VISUAL FOCUS: Singer Hero Portrait with Golden Back Glow (Left Side) */}
         <SingerHero frame={frame} bass={bass} energy={energy} />
 
-        {/* SECONDARY ELEMENT: Small Premium Cassette with Rotating Reels & 3D Tilt (Near Singer) */}
+        {/* BESIDE SINGER: Navy-and-Gold Transparent Cassette with English Name Only & 3D Float */}
         <SmallCassette
           frame={frame}
           totalFrames={durationInFrames}
@@ -83,13 +89,12 @@ export const HakimCassetteVideo: React.FC = () => {
           pulse={pulse}
         />
 
-        {/* TOP-RIGHT: Artist & Song Branding Badge */}
-        <SongBranding bass={bass} />
+        {/* Note: Upper-right duplicate branding REMOVED per user instructions */}
 
         {/* RIGHT / CENTER-RIGHT: Stylish Gold/Amber Audio Spectrum */}
         <AudioSpectrum bands={bands} energy={energy} bass={bass} />
 
-        {/* RIGHT / CENTER-RIGHT: Synchronized Pashto Lyrics (SRT cues with RTL shaping) */}
+        {/* RIGHT / CENTER-RIGHT: Synchronized Pashto Lyrics (Bahij Nazanin Font & RTL shaping) */}
         <PashtoLyrics frame={frame} />
       </CameraMotionController>
 

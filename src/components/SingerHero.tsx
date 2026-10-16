@@ -72,7 +72,7 @@ export const SingerHero: React.FC<SingerHeroProps> = ({ frame, bass, energy }) =
             objectFit: 'contain',
             objectPosition: 'center bottom',
             filter: `
-              drop-shadow(0 0 ${16 + bass * 12}px rgba(216, 169, 62, ${0.35 + bass * 0.25}))
+              drop-shadow(0 0 ${4 + bass * 3}px rgba(216, 169, 62, ${0.12 + bass * 0.08}))
               drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95))
             `,
           }}

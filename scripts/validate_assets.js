@@ -5,7 +5,7 @@ console.log('=== Validating Project Assets & Infrastructure ===');
 
 const requiredFiles = [
   { path: 'public/hakim_portrait.png', desc: 'Singer transparent PNG portrait' },
-  { path: 'public/Hakim_Jan_Blackish_Blurred_Background_1920x1080.png', desc: 'Blackish blurred scenic 1080p background' },
+  { path: 'public/Hakim_Jan_Scenic_Night_Background_1920x1080.jpg', desc: 'Clear scenic 1080p night background' },
   { path: 'public/Hakim_Jan_Cassette_English_Only_Transparent.png', desc: 'Navy & gold English-only transparent cassette' },
   { path: 'public/ghamjani_stargi.mp3', desc: 'Original master audio track' },
   { path: 'public/Extracted_CapCut_Pashto_Subtitles.srt', desc: 'Pashto SRT subtitles' },

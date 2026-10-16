@@ -99,7 +99,7 @@ export const PROJECT_CONFIG: ProjectConfig = {
     english: 'Hakim Jan Faryadi',
   },
   song: {
-    pashtoTitle: 'غمچنې سترګې سندره',
+    pashtoTitle: 'غمجنې سترګې سندره',
     englishTitle: 'Ghamjane Stargi',
     sublabel: 'Afghan Nostalgic Edition • High Fidelity Stereo',
     edition: 'EXCLUSIVE CASSETTE ARCHIVE',
@@ -108,7 +108,7 @@ export const PROJECT_CONFIG: ProjectConfig = {
     audioSrc: staticFile('ghamjani_stargi.mp3'),
     portraitSrc: staticFile('hakim_portrait.png'),
     subtitlesSrc: staticFile('Extracted_CapCut_Pashto_Subtitles.srt'),
-    backgroundSrc: staticFile('Hakim_Jan_Blackish_Blurred_Background_1920x1080.png'),
+    backgroundSrc: staticFile('Hakim_Jan_Scenic_Night_Background_1920x1080.jpg'),
     cassettePngSrc: staticFile('Hakim_Jan_Cassette_English_Only_Transparent.png'),
     customFontSrc: staticFile('fonts/Bahij Nazanin-Regular.ttf'),
   },
@@ -131,7 +131,7 @@ export const PROJECT_CONFIG: ProjectConfig = {
     },
     cassette: {
       leftPx: 560, // Beside the singer
-      bottomPx: 115, // Lifted slightly for title badge below
+      bottomPx: 120, // Lifted for comfortable breathing room
       widthPx: 350, // 18.2% of 1920 frame width
       heightPx: 214,
       yawDegrees: 6.5,
@@ -141,11 +141,11 @@ export const PROJECT_CONFIG: ProjectConfig = {
       bassPulseScale: 1.025,
     },
     cassetteTitle: {
-      leftPx: 560, // Centered below cassette
-      bottomPx: 48,
-      widthPx: 350,
-      heightPx: 48,
-      text: 'غمچنې سترګې سندره',
+      leftPx: 535, // Centered below cassette
+      bottomPx: 42,
+      widthPx: 400, // Expanded width for larger prominent title
+      heightPx: 58,  // Expanded height
+      text: 'غمجنې سترګې سندره',
     },
     spectrum: {
       rightPx: 70,

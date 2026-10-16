@@ -51,8 +51,8 @@ export const CassetteTitleBadge: React.FC<CassetteTitleBadgeProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '0 20px',
-          borderRadius: 24,
+          padding: '0 22px',
+          borderRadius: 28,
           background:
             'radial-gradient(ellipse at 50% 50%, rgba(13, 20, 32, 0.90) 0%, rgba(6, 10, 16, 0.95) 100%)',
           backdropFilter: 'blur(12px)',
@@ -69,9 +69,9 @@ export const CassetteTitleBadge: React.FC<CassetteTitleBadgeProps> = ({
         <span
           style={{
             color: '#d8a93e',
-            fontSize: 12,
+            fontSize: 14,
             opacity: 0.75 + bass * 0.25,
-            marginLeft: 12,
+            marginLeft: 14,
             textShadow: '0 0 8px rgba(216, 169, 62, 0.5)',
           }}
         >
@@ -82,10 +82,10 @@ export const CassetteTitleBadge: React.FC<CassetteTitleBadgeProps> = ({
         <span
           style={{
             fontFamily: "'Bahij Nazanin', 'Noto Naskh Arabic Local', 'Noto Naskh Arabic', sans-serif",
-            fontSize: 23,
+            fontSize: 29,
             fontWeight: 700,
             lineHeight: 1.2,
-            letterSpacing: 0.4,
+            letterSpacing: 0.5,
             background:
               'linear-gradient(135deg, #ffffff 0%, #fae8be 45%, #d8a93e 100%)',
             WebkitBackgroundClip: 'text',

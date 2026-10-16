@@ -1,0 +1,71 @@
+name: Quick Add Channel Logo to Master Video
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apply_logo:
+    name: Overlay Channel Logo & Update Master Video
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Download Existing 1080p Master Video
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v2.0.0-final-master --repo ${{ github.repository }} -p "HakimJan_Faryadi_GhamjaneStargi_1080p.mp4"
+          mv HakimJan_Faryadi_GhamjaneStargi_1080p.mp4 input_master.mp4
+          ls -lh input_master.mp4
+
+      - name: Overlay Logo with FFmpeg
+        run: |
+          echo "Starting high-speed FFmpeg logo overlay on 1080p master..."
+          ffmpeg -y -i input_master.mp4 -i public/HJ_Logo.png \
+            -filter_complex "[1:v]scale=180:-1[logo];[0:v][logo]overlay=45:H-h-35" \
+            -c:v libx264 -crf 18 -preset faster \
+            -c:a copy \
+            -movflags +faststart \
+            HakimJan_Faryadi_GhamjaneStargi_1080p.mp4
+
+          ls -lh HakimJan_Faryadi_GhamjaneStargi_1080p.mp4
+
+      - name: Generate Updated 360p & 480p Previews
+        run: |
+          # 360p lightweight preview (~14MB)
+          ffmpeg -y -i HakimJan_Faryadi_GhamjaneStargi_1080p.mp4 \
+            -vf "scale=-2:360" \
+            -c:v libx264 -crf 28 -preset fast \
+            -c:a aac -b:a 96k \
+            -movflags +faststart \
+            HakimJan_Faryadi_GhamjaneStargi_360p_preview.mp4
+
+          # 480p preview (~26MB)
+          ffmpeg -y -i HakimJan_Faryadi_GhamjaneStargi_1080p.mp4 \
+            -vf "scale=-2:480" \
+            -c:v libx264 -crf 26 -preset fast \
+            -c:a aac -b:a 128k \
+            -movflags +faststart \
+            HakimJan_Faryadi_GhamjaneStargi_480p_preview.mp4
+
+          ls -lh *.mp4
+
+      - name: Update GitHub Release Assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v2.0.0-final-master \
+            HakimJan_Faryadi_GhamjaneStargi_1080p.mp4 \
+            HakimJan_Faryadi_GhamjaneStargi_360p_preview.mp4 \
+            HakimJan_Faryadi_GhamjaneStargi_480p_preview.mp4 \
+            --repo ${{ github.repository }} \
+            --clobber

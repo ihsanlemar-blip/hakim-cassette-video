@@ -8,6 +8,7 @@ import { AudioSpectrum } from './components/AudioSpectrum';
 import { PashtoLyrics } from './components/PashtoLyrics';
 import { CameraMotionController } from './components/CameraMotionController';
 import { IntroOutro } from './components/IntroOutro';
+import { ChannelLogo } from './components/ChannelLogo';
 import { useAudioAnalysis } from './utils/audioAnalyzer';
 import { PROJECT_CONFIG } from './config/projectConfig';
 import './styles/fonts.css';
@@ -105,6 +106,9 @@ export const HakimCassetteVideo: React.FC = () => {
         {/* RIGHT / CENTER-RIGHT: Synchronized Pashto Lyrics (Bahij Nazanin Font & RTL shaping) */}
         <PashtoLyrics frame={frame} />
       </CameraMotionController>
+
+      {/* Broadcast Channel Logo Watermark (Bottom-Left) */}
+      <ChannelLogo />
 
       {/* 4. Cinematic Intro Banner, Reveal & Outro Transitions */}
       <IntroOutro frame={frame} totalFrames={durationInFrames} />

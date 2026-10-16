@@ -1,0 +1,129 @@
+name: Render Full 1080p Music Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      concurrency:
+        description: 'Rendering Concurrency (Number of parallel workers)'
+        required: true
+        default: '2'
+        type: string
+      crf:
+        description: 'Video Quality CRF (16-24; 18 is near-lossless luxury master)'
+        required: true
+        default: '18'
+        type: string
+      output_filename:
+        description: 'Output filename'
+        required: true
+        default: 'HakimJan_Faryadi_GhamjaneStargi_1080p.mp4'
+        type: string
+      frames:
+        description: 'Frame range (leave empty or set "all" for complete song; or e.g. "0-600" for test)'
+        required: false
+        default: 'all'
+        type: string
+
+jobs:
+  render:
+    name: Full HD Video Render (1080p 30 FPS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js LTS (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install System Dependencies for Headless Chromium & FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg \
+            libasound2 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcairo2 \
+            libcups2 \
+            libdrm2 \
+            libgbm1 \
+            libnss3 \
+            libpango-1.0-0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxkbcommon0 \
+            libxrandr2 \
+            fonts-noto-core \
+            fonts-noto-extra
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Run Pre-Render Validation Tests
+        run: npm run test
+
+      - name: Create Output Directory
+        run: mkdir -p out
+
+      - name: Render Video with Remotion CLI
+        run: |
+          OUTPUT_PATH="out/${{ github.event.inputs.output_filename }}"
+          CONCURRENCY="${{ github.event.inputs.concurrency }}"
+          CRF="${{ github.event.inputs.crf }}"
+          FRAMES_ARG=""
+          
+          if [ "${{ github.event.inputs.frames }}" != "all" ] && [ -n "${{ github.event.inputs.frames }}" ]; then
+            FRAMES_ARG="--frames=${{ github.event.inputs.frames }}"
+          fi
+          
+          echo "Starting Remotion render to ${OUTPUT_PATH} (concurrency: ${CONCURRENCY}, crf: ${CRF}, frames: ${FRAMES_ARG:-all})..."
+          
+          npx remotion render src/index.ts HakimCassetteVideo "${OUTPUT_PATH}" \
+            --concurrency="${CONCURRENCY}" \
+            --crf="${CRF}" \
+            --pixel-format=yuv420p \
+            --codec=h264 \
+            --audio-codec=aac \
+            ${FRAMES_ARG}
+
+      - name: Verify Rendered Video Integrity & Metadata
+        run: |
+          OUTPUT_PATH="out/${{ github.event.inputs.output_filename }}"
+          
+          if [ ! -f "${OUTPUT_PATH}" ]; then
+            echo "ERROR: Output video was not created!"
+            exit 1
+          fi
+          
+          FILE_SIZE=$(du -h "${OUTPUT_PATH}" | cut -f1)
+          echo "Output video created successfully: ${OUTPUT_PATH} (${FILE_SIZE})"
+          
+          echo "=== FFprobe Inspection ==="
+          ffprobe -v error -show_entries format=duration,size,bit_rate -show_streams -of default=noprint_wrappers=1 "${OUTPUT_PATH}"
+
+      - name: Upload Master MP4 Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hakim-jan-master-video
+          path: out/${{ github.event.inputs.output_filename }}
+          retention-days: 90
+
+      - name: Generate Render Summary
+        if: always()
+        run: |
+          OUTPUT_FILE="${{ github.event.inputs.output_filename }}"
+          echo "### 🏆 Final Music Video Render Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- **Output File:** \`${OUTPUT_FILE}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Artist:** حکیم جان فریادي (Hakim Jan Faryadi)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Song:** غمجنې سترګې (Ghamjane Stargi)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Resolution:** 1920 × 1080 (1080p Full HD)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Frame Rate:** 30 FPS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Encoding:** H.264 High Profile / AAC Audio" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "You can download the finished video directly from the **Artifacts** section of this GitHub Actions run!" >> $GITHUB_STEP_SUMMARY

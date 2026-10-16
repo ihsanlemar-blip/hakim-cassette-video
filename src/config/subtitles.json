@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "startMs": 33400,
+    "endMs": 37567,
+    "startFrame": 1002,
+    "endFrame": 1127,
+    "durationFrames": 125,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 2,
+    "startMs": 37567,
+    "endMs": 40967,
+    "startFrame": 1127,
+    "endFrame": 1229,
+    "durationFrames": 102,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 3,
+    "startMs": 40967,
+    "endMs": 45133,
+    "startFrame": 1229,
+    "endFrame": 1354,
+    "durationFrames": 125,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 4,
+    "startMs": 45133,
+    "endMs": 48533,
+    "startFrame": 1354,
+    "endFrame": 1456,
+    "durationFrames": 102,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 5,
+    "startMs": 48533,
+    "endMs": 52000,
+    "startFrame": 1456,
+    "endFrame": 1560,
+    "durationFrames": 104,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 6,
+    "startMs": 52000,
+    "endMs": 54967,
+    "startFrame": 1560,
+    "endFrame": 1649,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 7,
+    "startMs": 54967,
+    "endMs": 57933,
+    "startFrame": 1649,
+    "endFrame": 1738,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 8,
+    "startMs": 84333,
+    "endMs": 88033,
+    "startFrame": 2530,
+    "endFrame": 2641,
+    "durationFrames": 111,
+    "text": "که هزار ځله توبه وکړم یا لوظونه وکړم"
+  },
+  {
+    "id": 9,
+    "startMs": 93133,
+    "endMs": 97633,
+    "startFrame": 2794,
+    "endFrame": 2929,
+    "durationFrames": 135,
+    "text": "که هزار ځله توبه وکړم یا لوظونه وکړم"
+  },
+  {
+    "id": 10,
+    "startMs": 99933,
+    "endMs": 104000,
+    "startFrame": 2998,
+    "endFrame": 3120,
+    "durationFrames": 122,
+    "text": "مین زړګی مې سم د لاسه په قسم اړوي"
+  },
+  {
+    "id": 11,
+    "startMs": 104000,
+    "endMs": 106967,
+    "startFrame": 3120,
+    "endFrame": 3209,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 12,
+    "startMs": 107300,
+    "endMs": 110733,
+    "startFrame": 3219,
+    "endFrame": 3322,
+    "durationFrames": 103,
+    "text": "مین زړګی مې سم د لاسه په قسم اړوي"
+  },
+  {
+    "id": 13,
+    "startMs": 110767,
+    "endMs": 113733,
+    "startFrame": 3323,
+    "endFrame": 3412,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 14,
+    "startMs": 114033,
+    "endMs": 117400,
+    "startFrame": 3421,
+    "endFrame": 3522,
+    "durationFrames": 101,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 15,
+    "startMs": 117400,
+    "endMs": 120367,
+    "startFrame": 3522,
+    "endFrame": 3611,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 16,
+    "startMs": 120467,
+    "endMs": 123433,
+    "startFrame": 3614,
+    "endFrame": 3703,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 17,
+    "startMs": 154967,
+    "endMs": 159433,
+    "startFrame": 4649,
+    "endFrame": 4783,
+    "durationFrames": 134,
+    "text": "د دنیا ښکلو کې خوښ کړې یې، همدا دې ګوره"
+  },
+  {
+    "id": 18,
+    "startMs": 160033,
+    "endMs": 165033,
+    "startFrame": 4801,
+    "endFrame": 4951,
+    "durationFrames": 150,
+    "text": "د دنیا ښکلو کې خوښ کړې یې، همدا دې ګوره"
+  },
+  {
+    "id": 19,
+    "startMs": 165433,
+    "endMs": 168967,
+    "startFrame": 4963,
+    "endFrame": 5069,
+    "durationFrames": 106,
+    "text": "د دنیا ښکلو کې خوښ کړې یې، همدا دې ګوره"
+  },
+  {
+    "id": 20,
+    "startMs": 171533,
+    "endMs": 174700,
+    "startFrame": 5146,
+    "endFrame": 5241,
+    "durationFrames": 95,
+    "text": "ګرمه د ده ده، ګناه هسې په صنم اړوي"
+  },
+  {
+    "id": 21,
+    "startMs": 174700,
+    "endMs": 177667,
+    "startFrame": 5241,
+    "endFrame": 5330,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 22,
+    "startMs": 178300,
+    "endMs": 181467,
+    "startFrame": 5349,
+    "endFrame": 5444,
+    "durationFrames": 95,
+    "text": "ګرمه د ده ده، ګناه هسې په صنم اړوي"
+  },
+  {
+    "id": 23,
+    "startMs": 181467,
+    "endMs": 184433,
+    "startFrame": 5444,
+    "endFrame": 5533,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 24,
+    "startMs": 184733,
+    "endMs": 188100,
+    "startFrame": 5542,
+    "endFrame": 5643,
+    "durationFrames": 101,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 25,
+    "startMs": 188100,
+    "endMs": 191067,
+    "startFrame": 5643,
+    "endFrame": 5732,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 26,
+    "startMs": 219767,
+    "endMs": 224200,
+    "startFrame": 6593,
+    "endFrame": 6726,
+    "durationFrames": 133,
+    "text": "دا مې نصیب دی چې یې ګورم، راکوي ټکونه"
+  },
+  {
+    "id": 27,
+    "startMs": 228667,
+    "endMs": 232733,
+    "startFrame": 6860,
+    "endFrame": 6982,
+    "durationFrames": 122,
+    "text": "دا مې نصیب دی چې یې ګورم، راکوي ټکونه"
+  },
+  {
+    "id": 28,
+    "startMs": 235433,
+    "endMs": 238767,
+    "startFrame": 7063,
+    "endFrame": 7163,
+    "durationFrames": 100,
+    "text": "کله ناکله مې په سترګو د لړم اړوي"
+  },
+  {
+    "id": 29,
+    "startMs": 238767,
+    "endMs": 241233,
+    "startFrame": 7163,
+    "endFrame": 7237,
+    "durationFrames": 74,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 30,
+    "startMs": 241433,
+    "endMs": 244767,
+    "startFrame": 7243,
+    "endFrame": 7343,
+    "durationFrames": 100,
+    "text": "کله ناکله مې په سترګو د لړم اړوي"
+  },
+  {
+    "id": 31,
+    "startMs": 244933,
+    "endMs": 247400,
+    "startFrame": 7348,
+    "endFrame": 7422,
+    "durationFrames": 74,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 32,
+    "startMs": 248700,
+    "endMs": 252067,
+    "startFrame": 7461,
+    "endFrame": 7562,
+    "durationFrames": 101,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 33,
+    "startMs": 252067,
+    "endMs": 255033,
+    "startFrame": 7562,
+    "endFrame": 7651,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 34,
+    "startMs": 281800,
+    "endMs": 286233,
+    "startFrame": 8454,
+    "endFrame": 8587,
+    "durationFrames": 133,
+    "text": "دا مې نصیب دی چې یې ګورم، راکوي ټکونه"
+  },
+  {
+    "id": 35,
+    "startMs": 290633,
+    "endMs": 294333,
+    "startFrame": 8719,
+    "endFrame": 8830,
+    "durationFrames": 111,
+    "text": "دا مې نصیب دی چې یې ګورم، راکوي ټکونه"
+  },
+  {
+    "id": 36,
+    "startMs": 296500,
+    "endMs": 299833,
+    "startFrame": 8895,
+    "endFrame": 8995,
+    "durationFrames": 100,
+    "text": "کله ناکله مې د سترګو په لړم اړوي"
+  },
+  {
+    "id": 37,
+    "startMs": 299833,
+    "endMs": 302300,
+    "startFrame": 8995,
+    "endFrame": 9069,
+    "durationFrames": 74,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 38,
+    "startMs": 302500,
+    "endMs": 305833,
+    "startFrame": 9075,
+    "endFrame": 9175,
+    "durationFrames": 100,
+    "text": "کله ناکله مې د سترګو په لړم اړوي"
+  },
+  {
+    "id": 39,
+    "startMs": 306000,
+    "endMs": 308467,
+    "startFrame": 9180,
+    "endFrame": 9254,
+    "durationFrames": 74,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 40,
+    "startMs": 309767,
+    "endMs": 313133,
+    "startFrame": 9293,
+    "endFrame": 9394,
+    "durationFrames": 101,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 41,
+    "startMs": 313133,
+    "endMs": 315333,
+    "startFrame": 9394,
+    "endFrame": 9460,
+    "durationFrames": 66,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 42,
+    "startMs": 315333,
+    "endMs": 318300,
+    "startFrame": 9460,
+    "endFrame": 9549,
+    "durationFrames": 89,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 43,
+    "startMs": 342867,
+    "endMs": 347133,
+    "startFrame": 10286,
+    "endFrame": 10414,
+    "durationFrames": 128,
+    "text": "زه حکیم جان ملامت نه یم، خلکو یار مې داسې"
+  },
+  {
+    "id": 44,
+    "startMs": 351033,
+    "endMs": 355067,
+    "startFrame": 10531,
+    "endFrame": 10652,
+    "durationFrames": 121,
+    "text": "زه حکیم جان ملامت نه یم، خلکو یار مې داسې"
+  },
+  {
+    "id": 45,
+    "startMs": 357667,
+    "endMs": 360900,
+    "startFrame": 10730,
+    "endFrame": 10827,
+    "durationFrames": 97,
+    "text": "خونکارې سترګې یو ناڅاپه چم په چم اړوي"
+  },
+  {
+    "id": 46,
+    "startMs": 360900,
+    "endMs": 363500,
+    "startFrame": 10827,
+    "endFrame": 10905,
+    "durationFrames": 78,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 47,
+    "startMs": 363500,
+    "endMs": 366733,
+    "startFrame": 10905,
+    "endFrame": 11002,
+    "durationFrames": 97,
+    "text": "خونکارې سترګې یو ناڅاپه چم په چم اړوي"
+  },
+  {
+    "id": 48,
+    "startMs": 366733,
+    "endMs": 369333,
+    "startFrame": 11002,
+    "endFrame": 11080,
+    "durationFrames": 78,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  },
+  {
+    "id": 49,
+    "startMs": 370067,
+    "endMs": 373433,
+    "startFrame": 11102,
+    "endFrame": 11203,
+    "durationFrames": 101,
+    "text": "ښکلو ته ګوري، د بدرنګو نه قدم اړوي"
+  },
+  {
+    "id": 50,
+    "startMs": 373433,
+    "endMs": 375633,
+    "startFrame": 11203,
+    "endFrame": 11269,
+    "durationFrames": 66,
+    "text": "غمجنې سترګې مې په غم اړوي"
+  }
+]

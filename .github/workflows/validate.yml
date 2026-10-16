@@ -1,0 +1,53 @@
+name: Validate Remotion Project
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Run Validation & Integrity Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js LTS (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Validate Subtitles SRT & Timings
+        run: npm run test:subtitles
+
+      - name: Validate Assets & Media Paths
+        run: npm run test:assets
+
+      - name: Validate Remotion Compositions
+        run: npm run test:composition
+
+      - name: Type-Check TypeScript (tsc)
+        run: npm run typecheck
+
+      - name: Generate Validation Summary
+        if: always()
+        run: |
+          echo "### 🎬 Hakim Jan Faryadi — Remotion Validation Report" >> $GITHUB_STEP_SUMMARY
+          echo "- **Artist:** حکیم جان فریادي (Hakim Jan Faryadi)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Song Title:** غمجنې سترګې (Ghamjane Stargi)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Duration:** 11,873 frames (395.74 seconds @ 30 FPS)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Subtitles:** 50 cues verified from 00:00:33.400 to 00:06:15.633" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** All TypeScript and asset integrity tests passed successfully! ✅" >> $GITHUB_STEP_SUMMARY

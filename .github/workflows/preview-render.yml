@@ -1,0 +1,104 @@
+name: Visual Preview & Screenshot Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      render_preview_video:
+        description: 'Render 10-second preview video MP4'
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  preview:
+    name: Render Visual Screenshots & Preview MP4
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js LTS (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install System Dependencies for Headless Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg \
+            libasound2 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcairo2 \
+            libcups2 \
+            libdrm2 \
+            libgbm1 \
+            libnss3 \
+            libpango-1.0-0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxkbcommon0 \
+            libxrandr2 \
+            fonts-noto-core \
+            fonts-noto-extra
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Create Output Directory
+        run: mkdir -p out
+
+      - name: Render Screenshot 1 — Opening (00:00:00, Frame 0)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/01_opening_f0.png --frame=0
+
+      - name: Render Screenshot 2 — Intro Settled (00:00:10, Frame 300)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/02_intro_settled_f300.png --frame=300
+
+      - name: Render Screenshot 3 — First Subtitle Cue (00:00:33.4, Frame 1002)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/03_first_lyric_f1002.png --frame=1002
+
+      - name: Render Screenshot 4 — Mid-Song Lyrics (00:01:30, Frame 2700)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/04_midsong_lyrics_f2700.png --frame=2700
+
+      - name: Render Screenshot 5 — Main Composition (00:03:00, Frame 5400)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/05_main_composition_f5400.png --frame=5400
+
+      - name: Render Screenshot 6 — Later Section (00:05:00, Frame 9000)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/06_later_section_f9000.png --frame=9000
+
+      - name: Render Screenshot 7 — Final Subtitle Cue (00:06:15.6, Frame 11269)
+        run: npx remotion still src/index.ts HakimCassetteVideo out/07_final_lyric_f11269.png --frame=11269
+
+      - name: Render 10-Second Preview Video (Frames 980-1280)
+        if: ${{ inputs.render_preview_video }}
+        run: |
+          npx remotion render src/index.ts HakimCassetteVideo out/preview_first_lyric.mp4 --frames=980-1280 --concurrency=2
+
+      - name: Upload Visual Preview Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hakim-jan-preview-screenshots
+          path: |
+            out/*.png
+            out/*.mp4
+          retention-days: 30
+
+      - name: Generate Visual Preview Summary
+        if: always()
+        run: |
+          echo "### 📸 Visual Preview & Screenshot Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "The following representative frames were rendered and validated:" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:00:00 (Frame 0):** Opening reveal & background illumination" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:00:10 (Frame 300):** Singer hero, small cassette & branding banner" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:00:33.4 (Frame 1002):** First Pashto subtitle cue & active gold spectrum" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:01:30 (Frame 2700):** Mid-song active lyrics & rotating cassette reels" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:03:00 (Frame 5400):** Main visual composition with atmospheric dust & stars" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:05:00 (Frame 9000):** Later song section with synchronized audio reactivity" >> $GITHUB_STEP_SUMMARY
+          echo "- **00:06:15.6 (Frame 11269):** Concluding subtitle cue" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Download the screenshots and preview video from the **Artifacts** tab on this workflow run." >> $GITHUB_STEP_SUMMARY

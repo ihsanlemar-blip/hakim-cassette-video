@@ -1,0 +1,37 @@
+{
+  "name": "hakim-cassette-video",
+  "version": "1.0.0",
+  "description": "Premium Audio-Reactive Pashto Music Video in Remotion for Hakim Jan Faryadi",
+  "scripts": {
+    "start": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "test:subtitles": "node scripts/validate_subtitles.js",
+    "test:assets": "node scripts/validate_assets.js",
+    "test:composition": "node scripts/validate_composition.js",
+    "test": "npm run test:subtitles && npm run test:assets && npm run test:composition && npm run typecheck",
+    "render:full": "remotion render src/index.ts HakimCassetteVideo out/HakimJan_GhamjaneStargi_Final.mp4",
+    "render:preview-intro": "remotion render src/index.ts HakimCassetteVideo out/preview_intro.mp4 --frames=0-300",
+    "render:preview-lyrics": "remotion render src/index.ts HakimCassetteVideo out/preview_lyrics.mp4 --frames=980-1280",
+    "still:intro": "remotion still src/index.ts HakimCassetteVideo out/screenshot_intro_0.png --frame=0",
+    "still:settled": "remotion still src/index.ts HakimCassetteVideo out/screenshot_intro_300.png --frame=300",
+    "still:first-lyric": "remotion still src/index.ts HakimCassetteVideo out/screenshot_lyric_1002.png --frame=1002",
+    "still:mid-song": "remotion still src/index.ts HakimCassetteVideo out/screenshot_midsong_2700.png --frame=2700",
+    "still:main-visual": "remotion still src/index.ts HakimCassetteVideo out/screenshot_main_5400.png --frame=5400",
+    "still:later-song": "remotion still src/index.ts HakimCassetteVideo out/screenshot_later_9000.png --frame=9000",
+    "still:final-lyric": "remotion still src/index.ts HakimCassetteVideo out/screenshot_final_11269.png --frame=11269"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.235",
+    "@remotion/cli": "4.0.235",
+    "@remotion/media-utils": "4.0.235",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.235"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
+  }
+}

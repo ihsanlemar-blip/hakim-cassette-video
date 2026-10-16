@@ -37,4 +37,7 @@ Thumbs.db
 .env.test.local
 .env.production.local
 *.pem
+*client_secret*.json
+*clientSecret*.json
+token.json
 preview-artifact/

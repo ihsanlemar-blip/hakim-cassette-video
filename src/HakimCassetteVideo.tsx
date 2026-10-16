@@ -3,6 +3,7 @@ import { useCurrentFrame, useVideoConfig, Audio, staticFile } from 'remotion';
 import { BackgroundAtmosphere } from './components/BackgroundAtmosphere';
 import { SingerHero } from './components/SingerHero';
 import { SmallCassette } from './components/SmallCassette';
+import { CassetteTitleBadge } from './components/CassetteTitleBadge';
 import { AudioSpectrum } from './components/AudioSpectrum';
 import { PashtoLyrics } from './components/PashtoLyrics';
 import { CameraMotionController } from './components/CameraMotionController';
@@ -85,6 +86,13 @@ export const HakimCassetteVideo: React.FC = () => {
           frame={frame}
           totalFrames={durationInFrames}
           energy={energy}
+          bass={bass}
+          pulse={pulse}
+        />
+
+        {/* BELOW CASSETTE: Glassmorphic Gold Title Badge (غمچنې سترګې سندره) */}
+        <CassetteTitleBadge
+          frame={frame}
           bass={bass}
           pulse={pulse}
         />
